@@ -1,0 +1,95 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                           MEMBRI GRUPPO PROGETTO                             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+%    NOME/COG:  Matteo Codogno       (730620)                                  %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                               TESTO PROGETTO                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+% Uno degli algoritmi principali (e piu` semplici) utilizzati nell’analisi     %
+% statistica dei dati1 `e noto come l’algoritmo di clustering delle k-medie.   %
+% L’obiettivo di un algoritmo di clustering `e, dato un insieme di n oggetti   %
+% (o osservazioni), partizionarli in k sottoinsiemi (o categorie non           %
+% predefinite) che raggruppino oggetti che condividono delle propriet. Ad      %
+% esempio un algoritmo di clustering applicato a delle immagini telerilevate   %
+% potrebbe partizionare le immagini sulla base della tipologia di scena        %
+% rappresentata, quale centri abitati, boschi, superfici acquee, ecc. In       %
+% particolare, l’algoritmo di clustering delle k-medie `e di partizionare n    %
+% osservazioni in k clusters (gruppi), dove ogni osservazione appartiene al    %
+% gruppo in cui cade la media piu` “vicina”. La “media” (detta centroide)      %
+% serve come “prototipo” del gruppo. Il centroide che rappresenta una          %
+% categoria viene in questo caso calcolato come la media degli oggetti del     %
+% gruppo e ne costituisce il prototipo.                                        %
+% In generale il problema `e NP-hard, ma la variante “euristica” di Lloyd      %
+% dell’algoritmo k-medie `e una soluzione abbastanza buona ed efficace. Una    %
+% limitazione dell’algoritmo k-medie `e che il parametro k deve essere         %
+% specificato dall’utente in anticipo.                                         %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+% Il progetto KM si compone delle seguente sezioni:                            %
+%   1. test esistenza predicati                                                %
+%   2. funzioni manipolazione lista                                            %
+%   3. funzioni manipolazione vettori                                          %
+%   4. algoritmo kmeans                                                        %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                               TEST PREDICATI                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+% Questa sezione permette di verificare la presenza di un determinato          %
+% predicato all'interno della base di dati prolog                              %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            MANIPOLAZIONE LISTA                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+% - lmin/2        -> identifica il più piccolo elemento di una lista           %
+% - ins/4         -> aggiunge un elemento in una determinata posizione di una  %
+%                    lista                                                     %
+% - ldiv/3        -> divide tutti gli elementi di un lista per una costante    %
+% - lsum/2        -> somma tra loro tutti gli elementi di una lista            %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                           MANIPOLAZIONE VETTORI                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+% - new_vector/2  -> aggiunge alla base di dati un nuovo vettore               %
+% - innerprod/3   -> prodotto scalare tra 2 vettori                            %
+% - iprod/3       -> esegue la innerprod/3 ed esegue la lsum/2 sul risultato   %
+% - norm/2        -> calcola la norma di un vettore                            %
+% - vsum/3        -> somma tra vettori                                         %
+% - vsub/3        -> differenza tra vettori                                    %
+% - distance/3    -> calcola la distanza euclidea tra 2 vettori                %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                             ALGORITEMO KMEANS                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                              %
+% - init_centroid/3   -> implementazione del metodo forgy, sceglie in mamniera %
+%                        randomica 'N' centroidi tra le osservazioni           %
+% - distances/3       -> calcola le distanze tra un vettore e i diversi        %
+%                        centroidi                                             %
+% - chose_centroid/3  -> date le distanze tra un vettore e i centroidi,        %
+%                        sceglie il centroide più vicino                       %
+% - partition/3       -> accoda per ogni osservazione il centroide più vicino, %
+%                        in un'unica lista                                     %
+% - split_item/3      -> partendo dalla lista composta da osservazioni +       %
+%                        centroide, crea un cluster per ogni centroide con gli %
+%                        osservazioni a lui più vicine                         %
+% - spliting/3        -> crea una lista (cluster) con i vettori più vicini ad  %
+%                        un determinato centroide                              %
+% - centroid/3        -> calcolo dei centroidi per ciascun cluster             %
+% - compute_centroid/3-> calcolo del centroide di un cluster di vettori        %
+% - km/3              -> implementazione dell'algoritmo delle kmedie, data una %
+%                        lista di vettori e un numero di gruppi in cui         %
+%                        dividerli, raggruppa i vettori in 'N' gruppi divisi   %
+%                        per centroide                                         %
+% - compute_cluster/3 -> calcola i centroidi ottimali e divide le osservazioni %
+%                        su di essi, il metodo termina quando non vi sono più  %
+%                        ottimizzazioni da eseguire                            %
+%                                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
